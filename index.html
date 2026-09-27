@@ -139,7 +139,12 @@
         <div class="pub-thumb" aria-hidden="true"><span>NeurIPS<br />2026</span></div>
         <div class="pub-body">
           <h3>NavAble: A Large-Scale Dataset and Synthetic Data Generation Pipeline for Blind Navigation</h3>
-          <p class="authors">Hochul Hwang, Jahir Sadik Monon, <strong>Soowan Yang</strong>, Shiven Umeshbhai Patel, Anh Nhat Hong Nguyen, Kien Nguyen, Keshav Garg, Dylan Gage, Duretti Hordofaa, Anshu Anjna, Eshed Ohn-Bar, Donghyun Kim</p>
+          <p class="authors authors-collapsible">
+            Hochul Hwang<sup>†</sup>, Jahir Sadik Monon<sup>†</sup>, <strong>Soowan Yang</strong>,
+            <span class="authors-rest" hidden>Shiven Umeshbhai Patel, Anh Nhat Hong Nguyen, Kien Nguyen, Keshav Garg, Dylan Gage, Duretti Hordofaa, Anshu Anjna, Eshed Ohn-Bar, Donghyun Kim</span>
+            <button type="button" class="authors-toggle" aria-expanded="false">and 9 more authors</button>
+            <span class="authors-note"><sup>†</sup> equal contribution</span>
+          </p>
           <p class="venue"><em>Conference on Neural Information Processing Systems (NeurIPS), Evaluations &amp; Datasets Track</em>, 2026</p>
           <p class="pub-links">
             <span class="badge award">Poster · arXiv &amp; dataset release coming soon</span>
@@ -317,6 +322,16 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.authors-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var p = btn.closest('.authors-collapsible');
+        var rest = p.querySelector('.authors-rest');
+        var open = rest.hidden;
+        rest.hidden = !open;
+        btn.textContent = open ? 'show fewer' : 'and 9 more authors';
+        btn.setAttribute('aria-expanded', open);
+      });
+    });
     // Smooth active-link highlight
     const sections = document.querySelectorAll('main section[id]');
     const navlinks = document.querySelectorAll('.nav-links a');

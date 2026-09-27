@@ -162,6 +162,12 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 }
 .authors { font-size: .9rem; color: var(--muted); margin: 0 0 3px; }
 .authors strong { color: var(--text); }
+.authors-toggle {
+  background: none; border: 0; padding: 0; font: inherit; color: var(--muted);
+  border-bottom: 1px dashed var(--muted); cursor: pointer;
+}
+.authors-toggle:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.authors-note { display: block; font-size: .78rem; margin-top: 2px; }
 .venue { font-size: .84rem; color: var(--text); margin: 0 0 6px; white-space: nowrap; }
 .badges { margin: 0 0 6px; }
 .badge.award {
