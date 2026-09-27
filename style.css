@@ -149,6 +149,13 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 }
 .pub-video:hover .play-badge { opacity: 1; }
 .pub-video:hover { box-shadow: 0 6px 22px rgba(0,0,0,.22); }
+.pub-thumb {
+  flex: 0 0 190px; aspect-ratio: 16 / 9; border-radius: 10px; display: flex;
+  align-items: center; justify-content: center; text-align: center;
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #000));
+  color: #fff; font-weight: 700; font-size: 1.15rem; line-height: 1.25; letter-spacing: .02em;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+}
 .pub-body { flex: 1; min-width: 0; }
 .pub-body h3 {
   font-size: 1.02rem; font-weight: 600; margin: 0 0 6px; line-height: 1.4;
@@ -246,7 +253,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
   .news li { flex-direction: column; gap: 2px; }
   .news .date { flex: none; }
   .pub { flex-direction: column; gap: 12px; }
-  .pub-video { flex: none; width: 100%; max-width: 320px; }
+  .pub-video, .pub-thumb { flex: none; width: 100%; max-width: 320px; }
   .venue { white-space: normal; }
   .tl-item { flex-direction: column; gap: 4px; }
   .tl-when { flex: none; }
