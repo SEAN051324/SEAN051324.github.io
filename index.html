@@ -52,7 +52,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -75,43 +75,39 @@
   <main id="top">
     <!-- ===== HERO / ABOUT ===== -->
     <section id="about" class="hero">
-      <div class="hero-head">
+      <div class="hero-top">
+        <h1>Soowan <em>Yang</em></h1>
+        <nav class="hero-links" aria-label="Profile links">
+          <a href="assets/CV_Soowan_Yang.pdf">cv</a>
+          <a href="https://scholar.google.com/citations?hl=ko&user=_uDm1scAAAAJ" target="_blank" rel="noopener">scholar</a>
+          <a href="mailto:tntn6771@kaist.ac.kr">email</a>
+        </nav>
+      </div>
+      <p class="tagline">Building robots that move and assist in the real world.</p>
+      <div class="hero-body">
         <div class="hero-photo">
-          <img src="assets/profile.jpg" alt="Soowan Yang" onerror="this.classList.add('placeholder');this.alt='Add your photo at assets/profile.jpg';" />
+          <img src="assets/profile-square.jpg" alt="Soowan Yang" />
         </div>
-        <div class="hero-id">
-          <h1>Soowan Yang</h1>
-          <p class="tagline">Robotics &amp; AI researcher building <strong>robots that move and assist in the real world</strong>.</p>
-          <div class="links">
-            <a class="btn" href="assets/CV_Soowan_Yang.pdf">📄 CV</a>
-            <a class="btn" href="https://scholar.google.com/citations?hl=ko&user=_uDm1scAAAAJ" target="_blank" rel="noopener">🎓 Google Scholar</a>
-            <a class="btn" href="mailto:tntn6771@kaist.ac.kr">📧 Email</a>
-          </div>
+        <div class="hero-text">
+          <p>
+            I am an incoming M.S.–Ph.D. student at the
+            <a href="https://gsai.kaist.ac.kr/?lang=ko" target="_blank" rel="noopener">KAIST Kim Jaechul Graduate School of AI</a>,
+            working on robots that help people in everyday environments. My research spans
+            <strong>humanoid control</strong>, <strong>assistive robotics</strong>, and <strong>perception</strong>.
+          </p>
+          <p>
+            <strong>Humanoid Control</strong> — Planning and motion matching for agile whole-body skills,
+            such as real-time soccer dribbling on a 27-DoF humanoid.
+          </p>
+          <p>
+            <strong>Assistive Robotics</strong> — Vision-only guide dog robots 🦮 and large-scale datasets
+            for blind and low-vision navigation, studied with real users.
+          </p>
+          <p class="advised">
+            Advised by <a href="https://daroslab.github.io/" target="_blank" rel="noopener">Donghyun Kim</a> (DARoS Lab).
+            Currently finishing my B.S. in Mechanical Engineering at DGIST.
+          </p>
         </div>
-      </div>
-      <div class="hero-text">
-        <p class="bio">
-          I'm an <strong>incoming M.S.–Ph.D. integrated student</strong> at the
-          <a href="https://gsai.kaist.ac.kr/?lang=ko" target="_blank" rel="noopener"><strong>KAIST Kim Jaechul Graduate School of AI</strong></a>,
-          advised by <strong>Prof. Donghyun Kim</strong> (<a href="https://daroslab.github.io/" target="_blank" rel="noopener">DARoS Lab</a>).
-          I'm currently finishing my B.S. in Mechanical Engineering at <strong>DGIST</strong>.
-        </p>
-        <p class="bio">
-          My work spans <strong>humanoid control</strong>, <strong>assistive robotics</strong>,
-          and <strong>perception</strong> — from MCTS-based humanoid soccer planning to
-          vision-only guide-dog robots for blind and low-vision navigation.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== RESEARCH INTERESTS ===== -->
-    <section class="interests">
-      <div class="chip-row">
-        <span class="chip">Humanoid Control</span>
-        <span class="chip">Assistive Robotics</span>
-        <span class="chip">Motion Planning &amp; MCTS</span>
-        <span class="chip">Perception · Vision</span>
-        <span class="chip">Reinforcement Learning</span>
       </div>
     </section>
 
@@ -312,8 +308,8 @@
           <figcaption>A farewell from the lab — thank you, DARoS!</figcaption>
         </figure>
         <figure>
-          <img src="assets/lab/daros-dinner.jpg" alt="Dinner with labmates" loading="lazy" />
-          <figcaption>Dinner with labmates.</figcaption>
+          <img src="assets/lab/daros-dinner.jpg" alt="Dinner with Hochul Hwang" loading="lazy" />
+          <figcaption>Dinner with <a href="https://hchlhwang.github.io/" target="_blank" rel="noopener">Hochul</a>.</figcaption>
         </figure>
       </div>
     </section>
@@ -349,6 +345,14 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(s => obs.observe(s));
+
+    // Gentle reveal on scroll (skipped when the visitor prefers reduced motion)
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('main .block').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+    }
 
     // Lightbox for gallery images
     const lightbox = document.getElementById('lightbox');
